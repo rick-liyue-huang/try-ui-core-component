@@ -1,8 +1,8 @@
 
 import './App.css'
 import { CssBaseline, ThemeProvider } from '@mui/material'
-// import { Button } from './components'
-import { Button } from '../dist/try-ui-core-component'
+import { Button } from './components'
+// import { Button } from '../dist/try-ui-core-component'
 import { darkTheme } from './theme'
 
 function App() {
