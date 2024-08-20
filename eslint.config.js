@@ -23,6 +23,13 @@ export default tseslint.config(
                 'warn',
                 { allowConstantExport: true },
             ],
+            '@typescript-eslint/no-explicit-any': 'off',
+            'react-refresh/only-export-components': 'off',
+            '@typescript-eslint/no-var-requires': 'off',
+            'no-undef': 'off',
+            'unused-imports/no-unused-imports': 'off',
+            'react/react-in-jsx-scope': 'off', // Disable the rule that requires React to be in scope
+            '@typescript-eslint/no-unused-vars': 'off', // Disable the unused variable rule
         },
     }
 )

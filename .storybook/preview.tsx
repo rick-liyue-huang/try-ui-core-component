@@ -9,6 +9,8 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import '@fontsource/material-icons'
+import { CssVarsProvider } from '@mui/joy'
+import { ppThemes } from '../src/pp.themes.js';
 
 export const globalTypes = {
     theme: {
@@ -28,9 +30,9 @@ export const globalTypes = {
 }
 
 const THEMES = {
-    light: lightTheme,
-    dark: darkTheme,
-}
+    light: { mui: lightTheme, joy: ppThemes.colorSchemes.light },
+    dark: { mui: darkTheme, joy: ppThemes.colorSchemes.dark },
+};
 
 const WithMuiTheme = (Story, context) => {
     // The theme global we just declared
@@ -40,9 +42,11 @@ const WithMuiTheme = (Story, context) => {
     const theme = useMemo(() => THEMES[themeKey] || THEMES['light'], [themeKey])
 
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Story />
+        <ThemeProvider theme={theme.mui}>
+            <CssVarsProvider theme={ppThemes}>
+                <CssBaseline enableColorScheme />
+                <Story />
+            </CssVarsProvider>
         </ThemeProvider>
     )
 }
